@@ -19,6 +19,9 @@ public class CalidadLecheService {
         return this.calidadLecheRepository.findAll();
     }
 
+    public List<CalidadLeche> getCalidadesLecheByIdProduccionLeche(Long idProduccionLeche){
+        return this.calidadLecheRepository.findByIdProduccionLeche(idProduccionLeche);
+    }
     public Optional<CalidadLeche> getCalidadLecheById(Long id) {
         return this.calidadLecheRepository.findById(id);
     }

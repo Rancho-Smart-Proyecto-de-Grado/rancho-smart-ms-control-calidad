@@ -19,6 +19,10 @@ public class CalidadCarneService {
         return this.calidadCarneRepository.findAll();
     }
 
+    public List<CalidadCarne> getCalidadesCarneByIdProduccionCarne(Long idProduccionCarne){
+        return this.calidadCarneRepository.findByIdProduccionCarne(idProduccionCarne);
+    }
+    
     public Optional<CalidadCarne> getCalidadCarneById(Long id) {
         return this.calidadCarneRepository.findById(id);
     }

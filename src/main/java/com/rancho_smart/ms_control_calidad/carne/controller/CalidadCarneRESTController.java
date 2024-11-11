@@ -38,6 +38,16 @@ public class CalidadCarneRESTController {
                            .orElseGet(() -> new ResponseEntity<>(HttpStatus.NOT_FOUND));
     }
 
+    @GetMapping("/produccion-carne/{idProduccionCarne}")
+    public ResponseEntity<List<CalidadCarne>> getCalidadesCarneByIdProduccionCarne(@PathVariable Long idProduccionCarne){
+        List<CalidadCarne> calidadesProduccionCarne = this.calidadCarneService.getCalidadesCarneByIdProduccionCarne(idProduccionCarne);
+        if(calidadesProduccionCarne.isEmpty()){
+            return new ResponseEntity<>(HttpStatus.NO_CONTENT);
+        } else {
+            return new ResponseEntity<>(calidadesProduccionCarne, HttpStatus.OK);
+        }
+    }
+
     @PostMapping
     public ResponseEntity<CalidadCarne> saveCalidadCarne(@RequestBody CalidadCarne calidadCarne) {
         CalidadCarne calidadCarneCreada = this.calidadCarneService.saveCalidadCarne(calidadCarne);

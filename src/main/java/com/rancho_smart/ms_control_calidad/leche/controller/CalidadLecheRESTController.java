@@ -38,6 +38,16 @@ public class CalidadLecheRESTController {
                            .orElseGet(() -> new ResponseEntity<>(HttpStatus.NOT_FOUND));
     }
 
+    @GetMapping("/produccion-leche/{idProduccionLeche}")
+    public ResponseEntity<List<CalidadLeche>> getCalidadesLecheByIdProduccionLeche(@PathVariable Long idProduccionLeche){
+        List<CalidadLeche> calidadesProduccionLeche = this.calidadLecheService.getCalidadesLecheByIdProduccionLeche(idProduccionLeche);
+        if(calidadesProduccionLeche.isEmpty()){
+            return new ResponseEntity<>(HttpStatus.NO_CONTENT);
+        } else {
+            return new ResponseEntity<>(calidadesProduccionLeche, HttpStatus.OK);
+        }
+    }
+
     @PostMapping
     public ResponseEntity<CalidadLeche> saveCalidadLeche(@RequestBody CalidadLeche calidadLeche) {
         CalidadLeche calidadLecheCreada = this.calidadLecheService.saveCalidadLeche(calidadLeche);
